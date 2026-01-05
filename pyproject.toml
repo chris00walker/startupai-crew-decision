@@ -1,0 +1,29 @@
+[project]
+name = "startupai-decision-crew"
+version = "1.0.0"
+description = "StartupAI Decision Crew - 3-agent synthesis and decision engine"
+authors = [{ name = "Chris Walker", email = "chris@startupai.site" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[litellm,tools]==1.4.1",
+    "python-dotenv>=1.0.0",
+    "supabase>=2.0.0",
+    "httpx>=0.25.0",
+]
+
+[project.scripts]
+startupai-decision-crew = "decision_crew.main:run"
+run_crew = "decision_crew.main:run"
+train = "decision_crew.main:train"
+replay = "decision_crew.main:replay"
+test = "decision_crew.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/decision_crew"]
+
+[tool.crewai]
+type = "crew"
